@@ -1,36 +1,49 @@
+<div>
 
+  <div fxLayout="row" class="login-row">
+    <div fxFlex="33.33%"></div>
 
-<div class="row">
-  <div class="col-md-6 offset-md-3">
+    <div fxFlex="33.33%" class="login-box" style="padding: 10px;">
 
-    <ngb-panel title="Simple">
+      <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
 
-    <legend>Connection</legend>
-    <div style="float:right; position: relative; top:-10px; font-size: 85%;">
-      <a href="/#signup" style="text-decoration: none;">{{"NOUVELLEINSCRIPTION"}}</a>
+        <legend>Connection</legend>
+        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+        <div style="float:right; position: relative; top:-15px; font-size: 85%;">
+          <a href="/#signup" style="text-decoration: none;">Inscription</a>
+        </div>
+
+        <md-form-field style="width:100%;">
+          <input mdInput name="courriel" [(ngModel)]="model.courriel" #courriel="ngModel" placeholder="Courriel"
+                 required>
+        </md-form-field>
+
+        <md-form-field style="width:100%;">
+          <input mdInput name="motDePasse" [(ngModel)]="model.motDePasse" #motDePasse="ngModel"
+                 placeholder="Mot de passe" required>
+        </md-form-field>
+
+        <div class="button-row">
+          <button md-button [disabled]="loading" style="width:100%;">Se connecter</button>
+        </div>
+
+        <div class="button-row">
+          <button style="alignment: left;" color="primary" md-button [disabled]="loading" style="width:50%;">Facebook</button>
+          <button style="text-align: right;"  color="accent" md-button [disabled]="loading" style="width:49%;">Google</button>
+        </div>
+
+      </form>
+
     </div>
 
-    <h2>Login</h2>
-    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !courriel.valid }">
-        <label for="courriel">Courriel</label>
-        <input type="text" class="form-control" name="courriel" [(ngModel)]="model.courriel" #courriel="ngModel" required />
-        <div *ngIf="f.submitted && !courriel.valid" class="help-block">Le courriel est obligatoire</div>
-      </div>
-      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !motDePasse.valid }">
-        <label for="motDePasse">Mot de passe</label>
-        <input type="motDePasse" class="form-control" name="motDePasse" [(ngModel)]="model.motDePasse" #motDePasse="ngModel" required />
-        <div *ngIf="f.submitted && !motDePasse.valid" class="help-block">Password is required</div>
-      </div>
-      <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">Se connecter</button>
-        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-        <a [routerLink]="['/register']" class="btn btn-link">Inscription</a>
-      </div>
-    </form>
-    </ngb-panel>
+    <div fxFlex="33.33%"></div>
 
   </div>
+
 </div>
+
+
+
+
 
 

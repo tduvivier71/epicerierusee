@@ -1,10 +1,11 @@
-
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule }    from '@angular/forms';
 import { RouterModule} from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MaterialModule } from './material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
@@ -36,8 +37,10 @@ import { HomeComponent } from './home/index';
     FormsModule,
     RouterModule,
     HttpModule,
-    NgbModule.forRoot(),
-    routing
+    MaterialModule,
+    BrowserAnimationsModule,
+    routing,
+    FlexLayoutModule
   ],
 
   providers: [

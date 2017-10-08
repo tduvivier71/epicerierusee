@@ -1,6 +1,5 @@
 
 import { Routes, RouterModule } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
